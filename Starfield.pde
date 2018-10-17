@@ -1,10 +1,12 @@
 Particle[] turtle;
 void setup(){
   size(700,500); 
-  turtle = new NormalParticle[100];
+  turtle = new Particle[100];
     for(int i = 0; i < turtle.length; i++){
-  turtle[i] = new NormalParticle(); 
-  }
+      turtle[i] = new NormalParticle();
+    }
+  turtle[98] = new JumboParticle();
+  turtle[99] = new OddballParticle();
 }
 
 void draw(){
@@ -21,9 +23,9 @@ class NormalParticle implements Particle{
  NormalParticle(){
    x = 350;
    y = 250;
-   myColor = color(255, 255, 255); 
+   myColor = color(135,193,145); 
    angle = Math.random()*(Math.PI*2);
-   speed = (Math.random()*5) + 1;
+   speed = (Math.random()*3) + 1;
  }
  public void move(){ 
    if(x < 0 || x > 700){
@@ -38,6 +40,7 @@ class NormalParticle implements Particle{
    }
  }
  public void show(){
+  fill(myColor);
   ellipse((float)x,(float)y,10,10);
  }
 }
@@ -49,18 +52,31 @@ interface Particle{
 
 class OddballParticle implements Particle{
   double myX,myY,angle,speed;
+  double direction;
   int myColor;
   OddballParticle(){
-
+    myX = myY = 100;
+    myColor = color(240,160,63);
+    direction = 3;
   }
   public void show(){
-   
+    fill(myColor);
+    ellipse((float)myX,(float)myY,50,50);
   }
   public void move(){
-    
+    myX = myX + direction;
+    if(myX > 600 || myX < 100){
+      direction = direction * -1;
+    }
   }
 }
 
 class JumboParticle extends NormalParticle{
-  void public 
+  float mySize;
+  JumboParticle(){
+    mySize = 40; 
+  }
+  public void show(){
+    ellipse((float)x,(float)y,mySize,mySize);
+  }
 }
