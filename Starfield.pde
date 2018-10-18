@@ -1,19 +1,19 @@
-Particle[] turtle;
+Particle[] star;
 void setup(){
   size(700,500); 
-  turtle = new Particle[100];
-    for(int i = 0; i < turtle.length; i++){
-      turtle[i] = new NormalParticle();
+  star = new Particle[100];
+    for(int i = 0; i < star.length; i++){
+      star[i] = new NormalParticle();
     }
-  turtle[98] = new JumboParticle();
-  turtle[99] = new OddballParticle();
+  star[98] = new JumboParticle();
+  star[99] = new OddballParticle();
 }
 
 void draw(){
-  background(115,207,242);
-  for(int i = 0; i < turtle.length; i++){
-    turtle[i].show();
-    turtle[i].move();
+  background(0,0,0);
+  for(int i = 0; i < star.length; i++){
+    star[i].show();
+    star[i].move();
   }
 }
 
